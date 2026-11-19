@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="villaruz.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <header class="header">
+            <h1>REGISTRATION FORM</h1>
+            <P> Fill up the form below.</P>
+        </header>
+
+     <form id="registrationForm">
+
+            <fieldset>
+
+                <legend id="formLegend">Villaruz Registration Form</legend>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="firstName">First Name <span class="req">*</span></label>
+                        <input type="text" id="firstName" name="FirstName" placeholder="ex. (Jexter)" required>
+                        <span class="error" id="firstNameError"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="lastName">Last Name <span class="req">*</span></label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Villaruz" required>
+                        <span class="error" id="lastNameError"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="username">Username <span class="req">*</span></label>
+                        <input type="text" id="username" name="username" placeholder="5 to 12 characters" minlength="5" maxlength="12" required>
+                        <span class="error" id="usernameError"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="ex.(jextervillaruz@gmail.com)" required>
+                        <span class="error" id="emailError"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password <span class="req">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="8 to 16 characters" minlength="8" maxlength="16" required>
+                        <span class="error" id="passwordError"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" minlength="8" maxlength="16" required>
+                        <span class="error" id="confirmPasswordError"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="mobile">Mobile Number <span class="req">*</span></label>
+                        <input type="text" id="mobile" name="mobile" placeholder="09123456789" inputmode="numeric" maxlength="15" required>
+                        <span class="error" id="mobileError"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="dob">Date of Birth (DD-MM-YYYY) <span class="req">*</span></label>
+                        <input type="text" id="dob" name="dob" placeholder="DD-MM-YYYY" maxlength="10" inputmode="numeric" required>
+                        <span class="error" id="dobError"></span>
+                    </div>
+
+                    <div class="field">
+                        <span class="group-title">Gender <span class="req">*</span></span>
+                        <div class="options" id="genderGroup">
+                            <label class="option"><input type="radio" name="gender" value="Male"> Male</label>
+                            <label class="option"><input type="radio" name="gender" value="Female"> Female</label>
+                            <label class="option"><input type="radio" name="gender" value="Other"> Other</label>
+                        </div>
+                        <span class="error" id="genderError"></span>
+                    </div>
+
+                    <div class="field">
+                        <span class="group-title">Language Spoken <span class="req">*</span></span>
+                        <div class="options" id="languageGroup">
+                            <label class="option"><input type="checkbox" name="language" value="Cebuano"> Cebuano</label>
+                            <label class="option"><input type="checkbox" name="language" value="Tagalog"> Tagalog</label>
+                            <label class="option"><input type="checkbox" name="language" value="English"> English</label>
+                            <label class="option"><input type="checkbox" name="language" value="Others"> Others</label>
+                        </div>
+                        <span class="error" id="languageError"></span>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="religion">Religion <span class="req">*</span></label>
+                        <select id="religion" name="religion" required>
+                            <option value=""> Select Religion </option>
+                            <option value="Roman Catholic">Roman Catholic</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Iglesia ni Cristo">Iglesia ni Cristo</option>
+                            <option value="Seventh-day Adventist">Seventh-day Adventist</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <span class="error" id="religionError"></span>
+                    </div>
+                    <div class="field">
+                        <label for="upload">Upload Resume or Display Picture</label>
+                        <input type="file" id="upload" name="upload"
+                               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                        <small class="hint">PDF, DOC, DOCX, JPG or PNG (max 2 MB)</small>
+                        <span class="error" id="uploadError"></span>
+                    </div>
+                    <div class="field full">
+                        <label for="address">Address <span class="req">*</span></label>
+                        <textarea id="address" name="address" rows="4"
+                                  placeholder="House No., Street, Barangay, City, Province" required></textarea>
+                        <span class="error" id="addressError"></span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <input class="sub"  type="submit">
+                    <input class="res"  type="reset"> 
+                </div>
+            </fieldset>
+        </form>
+    </main>
+    <script src="script.js">const form = document.getElementById("registrationForm");
+const legend = document.getElementById("formLegend");
+const lastName = document.getElementById("lastName");
+const mobile = document.getElementById("mobile");
+const dob = document.getElementById("dob");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
+const DEFAULT_LEGEND = "Villaruz - Registration Form";
+function showError(id, message) {
+    document.getElementById(id + "Error").textContent = message;
+    const field = document.getElementById(id);
+    if (field) field.classList.add("invalid");
+}
+function clearError(id) {
+    document.getElementById(id + "Error").textContent = "";
+    const field = document.getElementById(id);
+    if (field) field.classList.remove("invalid");
+}
+lastName.addEventListener("input", function () {
+    const name = lastName.value.trim();
+    legend.textContent = (name === "" ? "Villaruz" : name) + " - Registration Form";
+});
+mobile.addEventListener("input", function () {
+    mobile.value = mobile.value.replace(/\D/g, "");
+});
+dob.addEventListener("input", function () {
+    let digits = dob.value.replace(/\D/g, "").slice(0, 8);
+    let result = digits;
+    if (digits.length > 4) {
+        result = digits.slice(0, 2) + "-" + digits.slice(2, 4) + "-" + digits.slice(4);
+    } else if (digits.length > 2) {
+        result = digits.slice(0, 2) + "-" + digits.slice(2);
+    }
+    dob.value = result;
+});
+confirmPassword.addEventListener("input", function () {
+    if (confirmPassword.value !== "" && confirmPassword.value !== password.value) {
+        showError("confirmPassword", "Passwords do not match.");
+    } else {
+        clearError("confirmPassword");
+    }
+});
+function validateFirstName() {
+    const value = document.getElementById("firstName").value.trim();
+    if (value === "") { showError("firstName", "First name is required."); return false; }
+    clearError("firstName");
+    return true;
+}
+function validateLastName() {
+    if (lastName.value.trim() === "") { showError("lastName", "Last name is required."); return false; }
+    clearError("lastName");
+    return true;
+}
+function validateUsername() {
+    const value = document.getElementById("username").value.trim();
+    if (value === "") { showError("username", "Username is required."); return false; }
+    if (value.length < 5 || value.length > 12) {
+        showError("username", "Username must be 5 to 12 characters.");
+        return false;
+    }
+    clearError("username");
+    return true;
+}
+function validatePassword() {
+    const value = password.value;
+    if (value === "") { showError("password", "Password is required."); return false; }
+    if (value.length < 8 || value.length > 16) {
+        showError("password", "Password must be 8 to 16 characters.");
+        return false;
+    }
+    clearError("password");
+    return true;
+}
+function validateConfirmPassword() {
+    const value = confirmPassword.value;
+    if (value === "") { showError("confirmPassword", "Please confirm your password."); return false; }
+    if (value.length < 8 || value.length > 16) {
+        showError("confirmPassword", "Confirm password must be 8 to 16 characters.");
+        return false;
+    }
+    if (value !== password.value) {
+        showError("confirmPassword", "Passwords do not match.");
+        return false;
+    }
+    clearError("confirmPassword");
+    return true;
+}
+function validateEmail() {
+    const value = document.getElementById("email").value.trim();
+    // Simple email pattern: text@text.text
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (value === "") { showError("email", "Email is required."); return false; }
+    if (!pattern.test(value)) { showError("email", "Enter a valid email (example: name@email.com)."); return false; }
+    clearError("email");
+    return true;
+}
+function validateMobile() {
+    const value = mobile.value;
+    if (value === "") { showError("mobile", "Mobile number is required."); return false; }
+    if (!/^[0-9]+$/.test(value)) { showError("mobile", "Mobile number must contain numbers only."); return false; }
+    if (value.length < 10 || value.length > 15) {
+        showError("mobile", "Mobile number must be 10 to 15 digits.");
+        return false;
+    }
+    clearError("mobile");
+    return true;
+}
+function validateGender() {
+    const selected = document.querySelector('input[name="gender"]:checked');
+    if (!selected) { showError("gender", "Please select a gender."); return false; }
+    clearError("gender");
+    return true;
+}
+function validateLanguage() {
+    const checked = document.querySelectorAll('input[name="language"]:checked');
+    if (checked.length === 0) { showError("language", "Select at least one language."); return false; }
+    clearError("language");
+    return true;
+}
+function validateReligion() {
+    if (document.getElementById("religion").value === "") {
+        showError("religion", "Please select a religion.");
+        return false;
+    }
+    clearError("religion");
+    return true;
+}
+function validateAddress() {
+    if (document.getElementById("address").value.trim() === "") {
+        showError("address", "Address is required.");
+        return false;
+    }
+    clearError("address");
+    return true;
+}
+function validateDob() {
+    const value = dob.value.trim();
+    if (value === "") { showError("dob", "Date of birth is required."); return false; }
+    const match = /^(\d{2})-(\d{2})-(\d{4})$/.exec(value);
+    if (!match) { showError("dob", "Use the format DD-MM-YYYY (example: 25-12-2000)."); return false; }
+    const day = parseInt(match[1], 10);
+    const month = parseInt(match[2], 10);
+    const year = parseInt(match[3], 10);
+    const date = new Date(year, month - 1, day);
+    const isReal = date.getFullYear() === year &&
+                   date.getMonth() === month - 1 &&
+                   date.getDate() === day;
+    if (!isReal || year < 1900) { showError("dob", "Enter a valid date."); return false; }
+    if (date > new Date()) { showError("dob", "Date of birth cannot be in the future."); return false; }
+    clearError("dob");
+    return true;
+}
+function validateUpload() {
+    const input = document.getElementById("upload");
+    if (input.files.length === 0) { clearError("upload"); return true; }
+    const file = input.files[0];
+    const allowed = ["pdf", "doc", "docx", "jpg", "jpeg", "png"];
+    const extension = file.name.split(".").pop().toLowerCase();
+    if (!allowed.includes(extension)) {
+        showError("upload", "Only PDF, DOC, DOCX, JPG or PNG files are allowed.");
+        return false;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+        showError("upload", "File is too large. Maximum size is 2 MB.");
+        return false;
+    }
+    clearError("upload");
+    return true;
+}
+document.getElementById("firstName").addEventListener("input", validateFirstName);
+lastName.addEventListener("input", validateLastName);
+document.getElementById("username").addEventListener("input", validateUsername);
+document.getElementById("email").addEventListener("input", validateEmail);
+password.addEventListener("input", function () {
+    validatePassword();
+    if (confirmPassword.value !== "") validateConfirmPassword();
+});
+mobile.addEventListener("input", validateMobile);
+dob.addEventListener("input", validateDob);
+document.getElementById("religion").addEventListener("change", validateReligion);
+document.getElementById("address").addEventListener("input", validateAddress);
+document.getElementById("upload").addEventListener("change", validateUpload);
+document.querySelectorAll('input[name="gender"]').forEach(function (r) {
+    r.addEventListener("change", validateGender);
+});
+document.querySelectorAll('input[name="language"]').forEach(function (c) {
+    c.addEventListener("change", validateLanguage);
+});
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const results = [
+        validateFirstName(),
+        validateLastName(),
+        validateUsername(),
+        validateEmail(),
+        validatePassword(),
+        validateConfirmPassword(),
+        validateMobile(),
+        validateDob(),
+        validateGender(),
+        validateLanguage(),
+        validateReligion(),
+        validateUpload(),
+        validateAddress()
+    ];
+    if (results.includes(false)) {
+        const firstInvalid = document.querySelector(".invalid");
+        if (firstInvalid) firstInvalid.focus();
+        return; 
+    }
+    alert("Registration Successfully Submitted!");
+    form.reset();
+    legend.textContent = DEFAULT_LEGEND;
+});</script>
+</body>
+</html>
